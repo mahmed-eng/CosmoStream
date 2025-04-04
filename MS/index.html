@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamSphere - Ultimate Entertainment Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e50914;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), transparent), 
+                       url('https://source.unsplash.com/random/1920x1080?cinema') center/cover;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #ff1a24;
+        }
+
+        /* Content Sections */
+        .category-section {
+            padding: 40px;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #e50914;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .content-card {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: scale(1.05);
+        }
+
+        .content-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .content-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .nav-links a {
+                margin-left: 15px;
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 0 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">StreamSphere</div>
+        <div class="nav-links">
+            <a href="#anime">Anime</a>
+            <a href="#movies">Movies</a>
+            <a href="#webseries">Web Series</a>
+            <a href="#kdrama">K-Drama</a>
+            <a href="#tvseries">TV Series</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Unlimited Entertainment Awaits</h1>
+            <p>Explore a world of anime, movies, series, and more in stunning quality.</p>
+            <button class="btn">Start Watching</button>
+        </div>
+    </section>
+
+    <section class="category-section" id="anime">
+        <h2 class="category-title">Anime</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?anime" alt="Anime">
+                <div class="card-overlay">
+                    <div class="card-title">Demon Slayer</div>
+                </div>
+            </div>
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?anime2" alt="Anime">
+                <div class="card-overlay">
+                    <div class="card-title">Attack on Titan</div>
+                </div>
+            </div>
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?anime3" alt="Anime">
+                <div class="card-overlay">
+                    <div class="card-title">Naruto</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="movies">
+        <h2 class="category-title">Movies</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?movie" alt="Movie">
+                <div class="card-overlay">
+                    <div class="card-title">Inception</div>
+                </div>
+            </div>
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?movie2" alt="Movie">
+                <div class="card-overlay">
+                    <div class="card-title">The Matrix</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="webseries">
+        <h2 class="category-title">Web Series</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?series" alt="Series">
+                <div class="card-overlay">
+                    <div class="card-title">Stranger Things</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="kdrama">
+        <h2 class="category-title">K-Drama</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?kdrama" alt="K-Drama">
+                <div class="card-overlay">
+                    <div class="card-title">Crash Landing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="tvseries">
+        <h2 class="category-title">TV Series</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <img src="https://source.unsplash.com/random/220x300?tv" alt="TV Series">
+                <div class="card-overlay">
+                    <div class="card-title">Breaking Bad</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 1)';
+                navbar.style.padding = '15px 40px';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+                navbar.style.padding = '20px 40px';
+            }
+        });
+
+        // Card Animation on Scroll
+        const cards = document.querySelectorAll('.content-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.5s ease forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
