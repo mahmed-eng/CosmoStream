@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosmoStream - Next-Level Entertainment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #1a0b2e;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Circular Navigation */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .nav-circle {
+            width: 60px;
+            height: 60px;
+            background: #ff007a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-circle:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: #ff007a;
+            transform: translateX(10px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1489599849927-2ee91ac47135?q=80&w=1974&auto=format&fit=crop') center/cover;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(26, 11, 46, 0.8), rgba(255, 0, 122, 0.3));
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #ff007a, #00ddeb);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: slideIn 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin: 20px 0;
+        }
+
+        .cosmo-btn {
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid #ff007a;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .cosmo-btn:hover {
+            background: #ff007a;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 122, 0.4);
+        }
+
+        /* Content Sections */
+        .category-section {
+            padding: 60px 40px;
+            background: linear-gradient(to bottom, #1a0b2e, #2c1b4e);
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #00ddeb;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .content-orbit {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            perspective: 1000px;
+        }
+
+        .content-card {
+            width: 250px;
+            height: 350px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+
+        .content-card:hover {
+            transform: rotateY(20deg) rotateX(10deg) scale(1.05);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            backface-visibility: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00ddeb;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-card {
+                width: 200px;
+                height: 280px;
+            }
+
+            .category-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <div class="nav-circle">Menu</div>
+        <div class="nav-menu">
+            <a href="#anime" class="nav-item">Anime</a>
+            <a href="#movies" class="nav-item">Movies</a>
+            <a href="#webseries" class="nav-item">Web Series</a>
+            <a href="#kdrama" class="nav-item">K-Drama</a>
+            <a href="#tvseries" class="nav-item">TV Series</a>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>CosmoStream</h1>
+            <p>Embark on an interstellar journey of entertainment</p>
+            <button class="cosmo-btn">Explore Now</button>
+        </div>
+    </section>
+
+    <section class="category-section" id="anime">
+        <h2 class="category-title">Anime</h2>
+        <div class="content-orbit">
+            <div class="content-card">
+                <div class="card-face card-front">
+                    <img src="https://images.unsplash.com/photo-1617020171990-65a5b0882608?q=80&w=1974&auto=format&fit=crop" alt="Demon Slayer">
+                    <div class="card-overlay">
+                        <div class="card-title">Demon Slayer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-face card-front">
+                    <img src="https://images.unsplash.com/photo-1628510080717-8542328d9e90?q=80&w=1974&auto=format&fit=crop" alt="Attack on Titan">
+                    <div class="card-overlay">
+                        <div class="card-title">Attack on Titan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="movies">
+        <h2 class="category-title">Movies</h2>
+        <div class="content-orbit">
+            <div class="content-card">
+                <div class="card-face card-front">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a70785fd3825?q=80&w=1974&auto=format&fit=crop" alt="Inception">
+                    <div class="card-overlay">
+                        <div class="card-title">Inception</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="webseries">
+        <h2 class="category-title">Web Series</h2>
+        <div class="content-orbit">
+            <div class="content-card">
+                <div class="card-face card-front">
+                    <img src="https://images.unsplash.com/photo-1668423311792-34d9eaffb0c0?q=80&w=1974&auto=format&fit=crop" alt="Stranger Things">
+                    <div class="card-overlay">
+                        <div class="card-title">Stranger Things</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="kdrama">
+        <h2 class="category-title">K-Drama</h2>
+        <div class="content-orbit">
+            <div class="content-card">
+                <div class="card-face card-front">
+                    <img src="https://images.unsplash.com/photo-1612881913548-473d7c8b7540?q=80&w=1974&auto=format&fit=crop" alt="Crash Landing">
+                    <div class="card-overlay">
+                        <div class="card-title">Crash Landing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="tvseries">
+        <h2 class="category-title">TV Series</h2>
+        <div class="content-orbit">
+            <div class="content-card">
+                <div class="card-face card-front">
+                    <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f3a0?q=80&w=1974&auto=format&fit=crop" alt="Breaking Bad">
+                    <div class="card-overlay">
+                        <div class="card-title">Breaking Bad</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle Navigation
+        const navCircle = document.querySelector('.nav-circle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navCircle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('.nav-item').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Card Animation on Scroll
+        const cards = document.querySelectorAll('.content-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideIn 0.8s ease forwards';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
